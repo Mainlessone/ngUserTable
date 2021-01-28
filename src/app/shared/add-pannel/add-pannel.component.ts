@@ -15,10 +15,14 @@ export class AddPannelComponent implements OnDestroy {
   private onAddedUser = new EventEmitter<boolean>();
 
   public userForm: FormGroup = new FormGroup({
-    "name": new FormControl('', Validators.required),
+    "name": new FormControl('', [
+      Validators.required,
+      Validators.minLength(3)
+    ]),
     "email": new FormControl('', [
       Validators.required,
-      Validators.email
+      Validators.email,
+      Validators.minLength(6)
     ]),
     "phone": new FormControl('', [
       Validators.required,
